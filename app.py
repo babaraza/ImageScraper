@@ -2,25 +2,31 @@ import requests
 from bs4 import BeautifulSoup
 from pathlib import Path
 
+# Define target url
 url = "https://www.google.com"
 
+# Open url
 r = requests.Session()
 res = r.get(url)
 res.raise_for_status()
 
+# Parse result to BeautifulSoup
 soup = BeautifulSoup(res.content, 'html.parser')
 
+# Find all <img> tags
 images = soup.findAll('img')
 
-
+# Iterate through <img> tags to extract image src
 for image in images:
     image_url = url + image.get('src')
     image_ext = image_url[-4:]
     image_data = r.get(image_url)
     image_data.raise_for_status()
 
+# TODO: Get name of the file from the src above instead of hard coding
     filename = Path('logo.png' + image_ext)
 
+# Check if image already exists
     if filename.exists():
         print(f'{filename} already exists')
     else:
