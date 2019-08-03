@@ -16,6 +16,7 @@ soup = BeautifulSoup(res.content, 'html.parser')
 # Find all <img> tags
 images = soup.findAll('img')
 
+# https://www.google.com/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png
 # Iterate through <img> tags to extract image src
 for image in images:
     image_url = url + image.get('src')
