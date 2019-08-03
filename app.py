@@ -16,15 +16,16 @@ soup = BeautifulSoup(res.content, 'html.parser')
 # Find all <img> tags
 images = soup.findAll('img')
 
+# https://www.google.com/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png
 # Iterate through <img> tags to extract image src
 for image in images:
     image_url = url + image.get('src')
     image_ext = image_url[-4:]
+    image_name = image_url[image_url.rfind('/')+1:-4]
     image_data = r.get(image_url)
     image_data.raise_for_status()
 
-# TODO: Get name of the file from the src above instead of hard coding
-    filename = Path('logo.png' + image_ext)
+    filename = Path(image_name + image_ext)
 
 # Check if image already exists
     if filename.exists():
