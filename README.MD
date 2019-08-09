@@ -1,7 +1,7 @@
 [![Python 3.7](https://img.shields.io/badge/Python-3.6-blue.svg)](https://www.python.org/downloads/release/python-374/)
 
 # Image Scraper
-###### Gets all the images from a URL and downloads them
+Gets all the images from a URL and downloads them
 
 ### Usage
 
