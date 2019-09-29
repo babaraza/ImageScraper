@@ -6,7 +6,8 @@ from pathlib import Path
 def get_images(url):
     # Open url
     r = requests.Session()
-    res = r.get(url)
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0'}
+    res = r.get(url, headers=headers)
     res.raise_for_status()
 
     # Parse result to BeautifulSoup
