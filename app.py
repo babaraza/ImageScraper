@@ -9,9 +9,9 @@ if init_question.lower() == "s":
 
 elif init_question.lower() == "g":
     base_url = 'https://www.google.com/search?safe=strict&tbm=isch&q='
-    url = input('Enter search string for Google Images > ')
+    query = input('Enter search string for Google Images > ')
     quant = input('Number of pictures to pull > ')
-    imagescraper_google.get_images(base_url+url, quant)
+    imagescraper_google.get_images(base_url, query, quant)
 
 else:
     print('Invalid Input')

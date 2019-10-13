@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 
 
-def get_images(url, number_of_imgs):
+def get_images(url, query, number_of_imgs):
     # Open url
     r = requests.Session()
 
-    res = r.get(url)
+    res = r.get(url+query)
     res.raise_for_status()
 
     # Parse result to BeautifulSoup
@@ -25,7 +25,7 @@ def get_images(url, number_of_imgs):
         image_data = r.get(image_url)
         image_data.raise_for_status()
 
-        folder = Path('temp/')
+        folder = Path(f'temp/{query.capitalize()}/')
         folder.mkdir(parents=True, exist_ok=True)
         filepath = folder / image_name
 
