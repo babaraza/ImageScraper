@@ -21,7 +21,7 @@ def get_images(url, query, number_of_imgs):
     for image in images[0:int(number_of_imgs)]:
         i += 1
         image_url = image.get('src')
-        image_name = f'img {str(i)}.jpg'
+        image_name = f'img_{str(i)}.jpg'
         image_data = r.get(image_url)
         image_data.raise_for_status()
 
